@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "52cfa56d-2c05-4e84-bc93-1f3cdc6f48ea",
+		"name": "Learn-Apis-DataSources",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23304628"
+	},
+	"item": [
+		{
+			"name": "learn-get-token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://{{domain}}/learn/api/public/v1/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"learn",
+						"api",
+						"public",
+						"v1",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "learn-get-dataSource",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{domain}}/learn/api/public/v1/dataSources/{{dataSourceId-get}}",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"learn",
+						"api",
+						"public",
+						"v1",
+						"dataSources",
+						"{{dataSourceId-get}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "learn-get-all-dataSources",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authorization}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{domain}}/learn/api/public/v1/dataSources",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"learn",
+						"api",
+						"public",
+						"v1",
+						"dataSources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "learn-post-domain",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authorization}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"externalId\": \"test-externalID\",\n    \"description\": \"test description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{domain}}/learn/api/public/v1/dataSources",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"learn",
+						"api",
+						"public",
+						"v1",
+						"dataSources"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "learn-delete-domain",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authorization}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://{{domain}}/learn/api/public/v1/dataSources/{{dataSourceId-delete}}",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"learn",
+						"api",
+						"public",
+						"v1",
+						"dataSources",
+						"{{dataSourceId-delete}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "learn-patch-domain",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authorization}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"description updated\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{domain}}/learn/api/public/v1/dataSources/{{dataSourceId-patch}}",
+					"protocol": "https",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"learn",
+						"api",
+						"public",
+						"v1",
+						"dataSources",
+						"{{dataSourceId-patch}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "username",
+			"value": "$APP_KEY",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "$APP_SECRET",
+			"type": "string"
+		},
+		{
+			"key": "authorization",
+			"value": "$ACCESSTOKEN",
+			"type": "string"
+		},
+		{
+			"key": "domain",
+			"value": "$LEARN_DOMAIN",
+			"type": "string"
+		},
+		{
+			"key": "dataSourceId-get",
+			"value": "$DATASOURCE_ID_GET",
+			"type": "string"
+		},
+		{
+			"key": "dataSourceId-delete",
+			"value": "$DATASOURCE_ID_DELETE",
+			"type": "string"
+		},
+		{
+			"key": "dataSourceId-patch",
+			"value": "$DATASOURCE_ID_PATCH",
+			"type": "string"
+		}
+	]
+}
